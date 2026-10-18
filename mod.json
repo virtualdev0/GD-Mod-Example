@@ -1,0 +1,11 @@
+{
+    "geode": "3.0.0",
+    "gd": {
+        "win": "2.2074"
+    },
+    "id": "twojnick.mojenowemenu",
+    "name": "Moje Nowe Mod Menu",
+    "version": "v1.0.0",
+    "developer": "TwojNick",
+    "description": "Moje własne menu zrobione w Notatniku!"
+}
