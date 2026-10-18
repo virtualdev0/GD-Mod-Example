@@ -4,4 +4,19 @@ on: [push, pull_request]
 
 jobs:
   build:
-    uses: geode-sdk/geode/.github/workflows/build-mod.yml@main
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Geode CLI
+        uses: geode-sdk/install-geode-cli@main
+
+      - name: Build
+        run: geode package new --no-interact
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod
+          path: build/*.geode
