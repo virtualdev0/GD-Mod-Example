@@ -1,11 +1,26 @@
-{
-    "geode": "3.0.0",
-    "gd": {
-        "win": "2.2074"
-    },
-    "id": "twojnick.mojenowemenu",
-    "name": "Moje Nowe Mod Menu",
-    "version": "v1.0.0",
-    "developer": "TwojNick",
-    "description": "Moje własne menu zrobione w Notatniku!"
-}
+name: Build Geode Mod
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Geode CLI
+        uses: geode-sdk/install-geode-cli@main
+
+      - name: Build Mod
+        run: geode package new --no-interact
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: geode-mod
+          path: build/*.geode
